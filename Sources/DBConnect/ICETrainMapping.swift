@@ -19,7 +19,7 @@ import UIKit
 public struct ICETrainType: TrainType {
   
     enum Model: CaseIterable {
-        case BR401, BR402, BR403, BR406, BR407, BR408, BR411, BR415, BR412, unknown
+        case BR401, BR402, BR403, BR406, BR407, BR408, BR411, BR415, BR412, IC2_TRE, BR4110, unknown
         
         var triebZugNummern: [Int] {
             switch self {
@@ -39,6 +39,10 @@ public struct ICETrainType: TrainType {
                 return [Int](1101...1199)
             case .BR415:
                 return [Int](1501...1599)
+            case .IC2_TRE:
+                return [Int](2850...2899) + [Int](4877...4919)
+            case .BR4110:
+                return [Int](4100...4117)
             case .BR412:
                 return [Int](9001...9999)
             case .unknown:
@@ -73,6 +77,10 @@ public struct ICETrainType: TrainType {
             return "ICE T"
         case .BR412:
             return "ICE 4"
+        case .IC2_TRE:
+            return "IC 2 (Twindexx)"
+        case .BR4110:
+            return "IC 2 (KISS)"
         case .unknown:
             return "Unknown Train Type"
         }
@@ -104,6 +112,10 @@ public struct ICETrainType: TrainType {
             return Image("BR415", bundle: Bundle.module)
         case .BR412:
             return Image("BR412", bundle: Bundle.module)
+        case .IC2_TRE:
+            return Image("IC2.TRE", bundle: Bundle.module)
+        case .BR4110:
+            return Image("BR4110", bundle: Bundle.module)
         case .unknown:
             return Image("BR401", bundle: Bundle.module)
         }
@@ -131,6 +143,10 @@ public struct ICETrainType: TrainType {
             return Bundle.module.image(forResource: "BR415")!
         case .BR412:
             return Bundle.module.image(forResource: "BR412")!
+        case .BR4110:
+            return Bundle.module.image(forResource: "BR4110")!
+        case .IC2_TRE:
+            return Bundle.module.image(forResource: "IC2.TRE")!
         case .unknown:
             return Bundle.module.image(forResource: "BR401")!
         }
